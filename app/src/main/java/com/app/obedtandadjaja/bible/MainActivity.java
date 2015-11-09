@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.obedtandadjaja.bible.R;
 
 
 public class MainActivity extends ActionBarActivity

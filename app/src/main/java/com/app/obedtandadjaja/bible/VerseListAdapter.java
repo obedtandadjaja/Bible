@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.content.Context;
 import android.text.Html;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.obedtandadjaja.bible.R;
 
 import java.util.ArrayList;
 

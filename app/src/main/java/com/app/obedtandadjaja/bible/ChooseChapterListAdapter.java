@@ -1,20 +1,22 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.widget.Button;
+
+import com.example.obedtandadjaja.bible.R;
 
 import java.util.ArrayList;
 
-public class BookListAdapter extends BaseAdapter {
+public class ChooseChapterListAdapter extends BaseAdapter {
 
-    ArrayList<Book> book_array;
+    ArrayList<Integer> book_array;
     Context context;
 
-    public BookListAdapter(ArrayList<Book> book_array, Context context){
+    public ChooseChapterListAdapter(ArrayList<Integer> book_array, Context context){
         this.context = context;
         this.book_array = book_array;
     }
@@ -26,7 +28,7 @@ public class BookListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Book getItem(int position) {
+    public Object getItem(int position) {
         // TODO Auto-generated method stub
         return book_array.get(position);
     }
@@ -44,11 +46,11 @@ public class BookListAdapter extends BaseAdapter {
 
         if (v == null) {
             LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = mInflater.inflate(R.layout.book_list_item, parent, false);
+            v = mInflater.inflate(R.layout.choose_chapter_list_item, parent, false);
         }
 
-        TextView text = (TextView) v.findViewById(R.id.textView);
-        text.setText(book_array.get(position).getName());
+        Button text = (Button) v.findViewById(R.id.button);
+        text.setText(book_array.get(position).toString());
         return v;
     }
 

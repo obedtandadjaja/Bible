@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -21,6 +21,8 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.example.obedtandadjaja.bible.R;
 
 import java.util.ArrayList;
 

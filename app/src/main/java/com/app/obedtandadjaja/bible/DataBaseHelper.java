@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.content.Context;
 import android.database.SQLException;

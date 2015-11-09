@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,14 +7,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.obedtandadjaja.bible.R;
 
 import java.util.ArrayList;
 
@@ -121,46 +120,30 @@ public class Bible extends Fragment {
         if(spl.getLanguage())
         {
             ArrayList<String> verse_array = book_data_source.getEnglishVerses(chapter);
+            for(int i = 0; i < verse_array.size(); i++)
+            {
+                if(verse_array.get(i) == null || verse_array.get(i).equals(""))
+                {
+                    verse_array.remove(i);
+                }
+            }
             verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
             verse_list.setAdapter(verse_list_adapter);
         }
         else
         {
             ArrayList<String> verse_array = book_data_source.getIndonesianVerses(chapter);
+            for(int i = 0; i < verse_array.size(); i++)
+            {
+                if(verse_array.get(i) == null || verse_array.get(i).equals(""))
+                {
+                    verse_array.remove(i);
+                }
+            }
             verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
             verse_list.setAdapter(verse_list_adapter);
         }
 
         return rootView;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        getActivity().getMenuInflater().inflate(R.menu.menu_main, menu);
-        this.menu = menu;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch(item.getItemId())
-//        {
-//            case R.id.mode:
-//                if(!spl.getMode())
-//                {
-//                    text.setBackgroundColor(Color.parseColor("#000000"));
-//                    text.setTextColor(Color.parseColor("#ffffff"));
-//                    spl.setMode(true);
-//                }
-//                else
-//                {
-//                    text.setBackgroundColor(Color.parseColor("#ffffff"));
-//                    text.setTextColor(Color.parseColor("#000000"));
-//                    spl.setMode(false);
-//                }
-//                break;
-//        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

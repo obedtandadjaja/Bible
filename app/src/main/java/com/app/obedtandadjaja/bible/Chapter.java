@@ -1,4 +1,4 @@
-package com.example.obedtandadjaja.bible;
+package com.app.obedtandadjaja.bible;
 
 /**
  * Created by obedtandadjaja on 8/5/15.
