@@ -10,8 +10,7 @@
         <activity
             android:name="com.app.obedtandadjaja.bible.MainActivity"
             android:label="@string/app_name"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:configChanges="orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
