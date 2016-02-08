@@ -151,7 +151,6 @@ public class BookDataSource {
         }
         cursor = database.rawQuery("select ind_tb from BIBLE where book_id = "+book_id+" and chapter = "+chapter.getChapter()+";", null);
         cursor.moveToFirst();
-//        Cursor cursor = database.rawQuery("select ind_tb from BIBLE where book_id = (select id from BOOK where name = \"KEJADIAN\") and chapter = 1;", null);
         ArrayList<String> verse_array = new ArrayList<String>();
         for(int i = 0; i < cursor.getCount(); i++)
         {
@@ -162,7 +161,7 @@ public class BookDataSource {
         return verse_array;
     }
 
-    public ArrayList<String> getEnglishVerses(Chapter chapter)
+    public ArrayList<String> getEnglishVersesESV(Chapter chapter)
     {
         Cursor cursor = database.rawQuery("select id from BOOK where name = \""+chapter.getBook_name()+"\";", null);
         cursor.moveToFirst();
@@ -171,9 +170,29 @@ public class BookDataSource {
         {
             book_id -= 66;
         }
-        cursor = database.rawQuery("select eng_asv from BIBLE where book_id = "+book_id+" and chapter = "+chapter.getChapter()+";", null);
+        cursor = database.rawQuery("select eng_esv from BIBLE where book_id = "+book_id+" and chapter = "+chapter.getChapter()+";", null);
         cursor.moveToFirst();
-//        Cursor cursor = database.rawQuery("select ind_tb from BIBLE where book_id = (select id from BOOK where name = \"KEJADIAN\") and chapter = 1;", null);
+        ArrayList<String> verse_array = new ArrayList<String>();
+        for(int i = 0; i < cursor.getCount(); i++)
+        {
+            String verse = cursor.getString(0);
+            verse_array.add(verse);
+            cursor.moveToNext();
+        }
+        return verse_array;
+    }
+
+    public ArrayList<String> getEnglishVersesNIV(Chapter chapter)
+    {
+        Cursor cursor = database.rawQuery("select id from BOOK where name = \""+chapter.getBook_name()+"\";", null);
+        cursor.moveToFirst();
+        int book_id = cursor.getInt(0);
+        if(book_id > 66)
+        {
+            book_id -= 66;
+        }
+        cursor = database.rawQuery("select eng_niv from BIBLE where book_id = "+book_id+" and chapter = "+chapter.getChapter()+";", null);
+        cursor.moveToFirst();
         ArrayList<String> verse_array = new ArrayList<String>();
         for(int i = 0; i < cursor.getCount(); i++)
         {
