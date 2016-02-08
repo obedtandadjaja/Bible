@@ -27,3 +27,9 @@ Horizontal Screen Layout - Home and Bible
 
 <img src="https://github.com/obedtandadjaja/Bible/blob/master/screenshots/screenshot5.png" width="300px"/>
 <img src="https://github.com/obedtandadjaja/Bible/blob/master/screenshots/screenshot6.png" width="300px"/>
+
+### Copyright
+NO COPYRIGHT JUST USE IT. ALL FOR JESUS. PLEASE USE THE CODE TO FURTHER GOD'S KINGDOM :)
+
+### Google Play Store
+This app is published in Google Play Store under the name ```English-Indonesian Bible```
