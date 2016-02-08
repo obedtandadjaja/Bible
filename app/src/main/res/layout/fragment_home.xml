@@ -18,57 +18,92 @@
         android:layout_margin="10dp"
         android:background="#2ecc71"
         android:textColor="#000000"
-        android:showText="true"/>
+        android:showText="true"
+        android:checked="false"
+        android:textSize="15dp"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/editText"
         android:layout_below="@+id/toggleButton"
-        android:hint="Filter Book ..."
-        android:padding="10dp"
+        android:layout_alignParentStart="true"
         android:background="#F5AB35"
-        android:textColor="#000000"
+        android:id="@+id/linearLayout1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:weightSum="1">
 
-    <RelativeLayout
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.5"
+            android:id="@+id/editText"
+            android:hint="Filter Book ..."
+            android:padding="15dp"
+            android:background="#F5AB35"
+            android:textColor="#000000"
+            android:textSize="15dp"/>
+
+        <ToggleButton
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textOff="Normal"
+            android:textOn="Comparison"
+            android:layout_weight="0.5"
+            android:background="#F5AB35"
+            android:textColor="#000000"
+            android:id="@+id/toggleButton3"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/linearLayout1"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
         android:background="#E08283"
-        android:id="@+id/relativeLayout"
+        android:id="@+id/linearLayout2"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:text="Sort Order"
-            android:padding="10dp"
-            android:textSize="8pt"
-            android:gravity="center_vertical"
-            android:textColor="#000000"/>
+        android:layout_marginRight="10dp"
+        android:weightSum="1">
         
         <ToggleButton
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:textOff="Traditional"
             android:textOn="Alphabetical"
-            android:layout_alignParentEnd="true"
+            android:layout_weight="0.5"
             android:background="#E08283"
             android:textColor="#000000"
-            android:id="@+id/toggleButton1"/>
+            android:id="@+id/toggleButton1"
+            android:gravity="left"
+            android:padding="15dp"
+            android:textSize="15dp"/>
 
-    </RelativeLayout>
+        <ToggleButton
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:textOff="Terjemahan Baru"
+            android:textOn="Terjemahan Baru"
+            android:layout_weight="0.5"
+            android:background="#E08283"
+            android:textColor="#000000"
+            android:id="@+id/toggleButton2"
+            android:gravity="right"
+            android:padding="15dp"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/linearLayout2"
         android:layout_alignParentStart="true"
         android:background="#D2D7D3"
         android:layout_marginLeft="10dp"
