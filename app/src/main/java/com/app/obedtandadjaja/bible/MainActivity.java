@@ -1,9 +1,11 @@
 package com.app.obedtandadjaja.bible;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -54,6 +56,8 @@ public class MainActivity extends ActionBarActivity
     }
 
     public void onSectionAttached(int number) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment fragment = null;
         switch (number) {
             case 1:
@@ -64,14 +68,18 @@ public class MainActivity extends ActionBarActivity
                 mTitle = "Bible";
                 fragment = new Bible();
                 break;
+            case 3:
+                mTitle = "Comparison";
+                fragment = new Comparison();
+                break;
         }
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager
-                .beginTransaction()
-                .replace(R.id.container,
-                        fragment).commit();
-
+        fragmentTransaction.add(R.id.container, fragment);
+        fragmentTransaction.commit();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        fragmentManager
+//                .beginTransaction()
+//                .replace(R.id.container,
+//                        fragment).commit();
     }
 
     public void restoreActionBar() {
@@ -81,6 +89,9 @@ public class MainActivity extends ActionBarActivity
         actionBar.setTitle(mTitle);
     }
 
+    public void setActionBarTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
