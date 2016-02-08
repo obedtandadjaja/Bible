@@ -15,6 +15,9 @@ public class SharedPreferencesLibrary {
     final String CHAPTER = "CHAPTER";
     final String MODE = "MODE";
     final String LANGUAGE = "LANGUAGE";
+    final String VERSION = "VERSION";
+    final String SORT = "SORT";
+    final String STATE = "STATE";
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
@@ -66,6 +69,48 @@ public class SharedPreferencesLibrary {
         sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         boolean bool = sp.getBoolean(MODE, false);
         return bool;
+    }
+
+    public void setVersion(boolean bool)
+    {
+        editor = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+        editor.putBoolean(VERSION, bool);
+        editor.commit();
+    }
+
+    public boolean getVersion()
+    {
+        sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        boolean bool = sp.getBoolean(VERSION, false);
+        return bool;
+    }
+
+    public void setSort(boolean bool)
+    {
+        editor = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+        editor.putBoolean(SORT, bool);
+        editor.commit();
+    }
+
+    public boolean getSort()
+    {
+        sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        boolean bool = sp.getBoolean(SORT, false);
+        return bool;
+    }
+
+    public void setState(int i)
+    {
+        editor = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit();
+        editor.putInt(STATE, i);
+        editor.commit();
+    }
+
+    public int getState()
+    {
+        sp = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        int i = sp.getInt(STATE, 0);
+        return i;
     }
 
 }
