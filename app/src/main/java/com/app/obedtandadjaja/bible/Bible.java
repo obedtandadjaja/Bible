@@ -1,14 +1,20 @@
 package com.app.obedtandadjaja.bible;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,19 +28,22 @@ import java.util.ArrayList;
  */
 public class Bible extends Fragment {
 
-    SharedPreferencesLibrary spl;
-    Chapter chapter;
-    Menu menu;
-    TextView text;
-    BookDataSource book_data_source;
-    ListView verse_list;
-    VerseListAdapter verse_list_adapter;
-    Button prev, next, index;
+    private final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
+    private SharedPreferencesLibrary spl;
+    private Chapter chapter;
+    private Menu menu;
+    private TextView text;
+    private BookDataSource book_data_source;
+    private ListView verse_list;
+    private VerseListAdapter verse_list_adapter;
+    private Button prev, next, index;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        if (savedInstanceState != null) {
+            savedInstanceState.putInt(STATE_SELECTED_POSITION, 2);
+        }
     }
 
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -108,27 +117,34 @@ public class Bible extends Fragment {
             }
         });
 
-//        if(spl.getMode())
-//        {
-//            verse_list.setBackgroundColor(Color.parseColor("#000000"));
-//        }
-//        else
-//        {
-//            verse_list.setBackgroundColor(Color.parseColor("#ffffff"));
-//        }
-
         if(spl.getLanguage())
         {
-            ArrayList<String> verse_array = book_data_source.getEnglishVerses(chapter);
-            for(int i = 0; i < verse_array.size(); i++)
+            if(spl.getVersion())
             {
-                if(verse_array.get(i) == null || verse_array.get(i).equals(""))
+                ArrayList<String> verse_array = book_data_source.getEnglishVersesNIV(chapter);
+                for(int i = 0; i < verse_array.size(); i++)
                 {
-                    verse_array.remove(i);
+                    if(verse_array.get(i) == null || verse_array.get(i).equals(""))
+                    {
+                        verse_array.remove(i);
+                    }
                 }
+                verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
+                verse_list.setAdapter(verse_list_adapter);
             }
-            verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
-            verse_list.setAdapter(verse_list_adapter);
+            else
+            {
+                ArrayList<String> verse_array = book_data_source.getEnglishVersesESV(chapter);
+                for(int i = 0; i < verse_array.size(); i++)
+                {
+                    if(verse_array.get(i) == null || verse_array.get(i).equals(""))
+                    {
+                        verse_array.remove(i);
+                    }
+                }
+                verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
+                verse_list.setAdapter(verse_list_adapter);
+            }
         }
         else
         {
@@ -143,6 +159,35 @@ public class Bible extends Fragment {
             verse_list_adapter = new VerseListAdapter(verse_array, getActivity());
             verse_list.setAdapter(verse_list_adapter);
         }
+
+        final ActionBar actionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
+
+        verse_list.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            private int mLastFirstVisibleItem;
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
+                if (mLastFirstVisibleItem < firstVisibleItem)
+                {
+                    if (actionBar.isShowing())
+                    {
+                        actionBar.hide();
+                    }
+                }
+                if (mLastFirstVisibleItem > firstVisibleItem)
+                {
+                    if (!actionBar.isShowing())
+                    {
+                        actionBar.show();
+                    }
+                }
+                mLastFirstVisibleItem = firstVisibleItem;
+            }
+        });
 
         return rootView;
     }
