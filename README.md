@@ -1,7 +1,7 @@
 # Bible
-A simple Android Bible App
+A simple bilingual Android Bible App
 
-Languages supported: English - Indonesian
+Two languages supported: English - Indonesian
 
 ### Functionalities
 1. Search/Find book
