@@ -1,11 +1,8 @@
 package com.app.obedtandadjaja.bible;
 
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -14,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -162,32 +158,32 @@ public class Bible extends Fragment {
 
         final ActionBar actionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
 
-        verse_list.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            private int mLastFirstVisibleItem;
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-            }
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
-                if (mLastFirstVisibleItem < firstVisibleItem)
-                {
-                    if (actionBar.isShowing())
-                    {
-                        actionBar.hide();
-                    }
-                }
-                if (mLastFirstVisibleItem > firstVisibleItem)
-                {
-                    if (!actionBar.isShowing())
-                    {
-                        actionBar.show();
-                    }
-                }
-                mLastFirstVisibleItem = firstVisibleItem;
-            }
-        });
+//        verse_list.setOnScrollListener(new AbsListView.OnScrollListener() {
+//
+//            private int mLastFirstVisibleItem;
+//
+//            @Override
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//            }
+//            @Override
+//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
+//                if (mLastFirstVisibleItem < firstVisibleItem)
+//                {
+//                    if (actionBar.isShowing())
+//                    {
+//                        actionBar.hide();
+//                    }
+//                }
+//                if (mLastFirstVisibleItem > firstVisibleItem)
+//                {
+//                    if (!actionBar.isShowing())
+//                    {
+//                        actionBar.show();
+//                    }
+//                }
+//                mLastFirstVisibleItem = firstVisibleItem;
+//            }
+//        });
 
         return rootView;
     }

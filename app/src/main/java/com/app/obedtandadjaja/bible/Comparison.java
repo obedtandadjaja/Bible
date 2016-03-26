@@ -128,34 +128,34 @@ public class Comparison extends Fragment {
         verse_list_adapter = new VerseListComparisonAdapter(verse_array1, verse_array2, getActivity());
         verse_list.setAdapter(verse_list_adapter);
 
-        final ActionBar actionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
+//        final ActionBar actionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
 
-        verse_list.setOnScrollListener(new AbsListView.OnScrollListener() {
-
-            private int mLastFirstVisibleItem;
-
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-            }
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
-                if (mLastFirstVisibleItem < firstVisibleItem)
-                {
-                    if (actionBar.isShowing())
-                    {
-                        actionBar.hide();
-                    }
-                }
-                if (mLastFirstVisibleItem > firstVisibleItem)
-                {
-                    if (!actionBar.isShowing())
-                    {
-                        actionBar.show();
-                    }
-                }
-                mLastFirstVisibleItem = firstVisibleItem;
-            }
-        });
+//        verse_list.setOnScrollListener(new AbsListView.OnScrollListener() {
+//
+//            private int mLastFirstVisibleItem;
+//
+//            @Override
+//            public void onScrollStateChanged(AbsListView view, int scrollState) {
+//            }
+//            @Override
+//            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
+//                if (mLastFirstVisibleItem < firstVisibleItem)
+//                {
+//                    if (actionBar.isShowing())
+//                    {
+//                        actionBar.hide();
+//                    }
+//                }
+//                if (mLastFirstVisibleItem > firstVisibleItem)
+//                {
+//                    if (!actionBar.isShowing())
+//                    {
+//                        actionBar.show();
+//                    }
+//                }
+//                mLastFirstVisibleItem = firstVisibleItem;
+//            }
+//        });
 
         return rootView;
     }
